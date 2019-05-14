@@ -1,0 +1,38 @@
+Ideas:
+netdiscover -i tap0 -r 10.11.1.1/24
+nikto
+dirbuster
+dirsearch?
+ftp check anon access
+enum4linux
+
+shellshock - nmap -O -vv -sV --script http-shellshock --script-args unsafe=1 10.11.1.115
+
+nikto -h 10.11.1.234 -p 10443 -C all -output /root/lab/10.11.1.234/scans/10.11.1.234_10443_nikto.htm  (-C all will try to find cgi-bin for shellshock)
+
+add snmp to recomendations 
+
+add pop3, imapd service recs
+
+add fimap for file inclusion
+
+https://medium.com/@hakluke/haklukes-ultimate-oscp-guide-part-3-practical-hacking-tips-and-tricks-c38486f5fc97
+https://web.archive.org/web/20170825074040/https://thor-sec.com/review/oscp_review/
+
+banners & service versioning - take you time to identify the software your up against (most forget this step)
+research common weaknesses cves, exploit-db
+web apps 1st thing - always read the source
+web apps continued - try sql bypass, sql detection strings, check for LFI, when is an LFI an RFI? try different encodings.
+just like the labs always run nikto, and dirb : you never know what they'll throw up, hidden directory, hidden app? hint? etc?
+
+msfvenom -l payloads |grep "cmd/unix"
+to see 1 liner shells
+
+***bad characters for buffer overflow/rev shells!***
+
+nmap 10.11.1.71 -p 80 \
+  --script=http-shellshock \
+  --script-args uri=/cgi-bin/test.cgi --script-args uri=/cgi-bin/admin.cgi
+
+
+  2>&1
